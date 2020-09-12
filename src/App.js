@@ -1,21 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from '@material-ui/core/Button';
+import Header from './components/header';
+import MainContent from './components/main-content';
+import SideContent from './components/side-content';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button variant="contained" color="primary">
-        Learn React
-        </Button>
-      </header>
-    </div>
+    <Container disableGutters={true} maxWidth={false}>
+      <Header></Header>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={9}>
+          <MainContent></MainContent>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <SideContent></SideContent>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
