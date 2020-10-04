@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Logo from '../logo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +22,13 @@ function Header() {
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit">
-                Yaya Games
-            </Typography>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                  <MenuIcon />
+              </IconButton>
+              <Logo></Logo>
+              <Typography variant="h6" color="inherit">
+                  Yaya Games
+              </Typography>
             </Toolbar>
         </AppBar>
     );
