@@ -4,7 +4,7 @@ import Aux from '../hoc/aux'
 
 const logo = (props) => (
     <Aux>
-        <img src={logoImg} atl="Yaya Games" width="40px"/>
+        <img src={logoImg} alt="Yaya Games" width="40px"/>
     </Aux>
 );
 
