@@ -1,44 +1,40 @@
 import React from 'react';
 import './header.css';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Logo from '../logo';
 import Aux from '../hoc/aux';
-import UserMenu from '../users/UserMenu';
+import Drawer from '@material-ui/core/Drawer';
+import DrawerList from './DrawerList';
+import Bar from './Bar';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+const drawerWidth = 240;
+const useStyles = makeStyles(() => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  grow: {
-    flexGrow: 1,
+  drawerPaper: {
+    width: drawerWidth,
   },
 }));
 
 function Header() {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+      setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
+
     return (
       <Aux>
-        <AppBar position="static">
-            <Toolbar variant="dense">
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                  <MenuIcon />
-              </IconButton>
-              <Logo></Logo>
-              <Typography variant="h6" color="inherit">
-                  Yaya Games
-              </Typography>
-              <div className={classes.grow} />
-              <UserMenu/>
-            </Toolbar>
-        </AppBar>
+        <Bar open={open} onClick={handleDrawerOpen}/>
+        <Drawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{ paper: classes.drawerPaper }}>
+          <DrawerList onClick={handleDrawerClose}/>
+        </Drawer>
       </Aux>
     );
 }
