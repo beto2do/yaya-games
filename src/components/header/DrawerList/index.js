@@ -8,6 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import Aux from '../../hoc/aux';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     drawerHeader: {
@@ -32,11 +33,19 @@ const DrawerList = (props) => {
         </div>
         <Divider />
         <List>
-            {['Games', 'About', 'Send feedback'].map((text) => (
-            <ListItem button key={text}>
-                <ListItemText primary={text} />
+            <ListItem button key="games">
+                <ListItemText>
+                    <Link to="/">Games</Link>
+                </ListItemText>
             </ListItem>
-            ))}
+            <ListItem button key="about">
+                <ListItemText>
+                    <Link to="/about">About</Link>
+                </ListItemText>
+            </ListItem>
+            <ListItem button key="sendFeedback">
+                <ListItemText primary="Send Feedback"></ListItemText>
+            </ListItem>            
         </List>
     </Aux>
     );

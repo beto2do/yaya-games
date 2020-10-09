@@ -1,19 +1,26 @@
 import React from 'react';
-import Layout from './components/Layout'
-import MainContent from './components/main-content';
-import SideContent from './components/side-content';
-import Grid from '@material-ui/core/Grid';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Header from './components/header';
+import Home from './containers/Home';
+import About from './containers/About';
 
 function App() {
   return (
-    <Layout>
-          <Grid item xs={12} sm={9}>
-            <MainContent></MainContent>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <SideContent></SideContent>
-          </Grid>
-    </Layout>
+    <Router>
+      <Header/>
+      <Switch>
+        <Route path="/about">
+          <About /> 
+        </Route>
+        <Route path="/">
+          <Home /> 
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
